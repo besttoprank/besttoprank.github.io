@@ -55,6 +55,10 @@
       font-weight: 700;
       margin: 0;
     }
+    .logo a {
+      color: var(--light-text);
+      text-decoration: none;
+    }
     nav {
       display: flex;
       justify-content: space-between;
@@ -233,11 +237,10 @@
 <body>
   <header>
     <div class="container">
-      <h2 class="logo">Best Top Rank</h2>
+      <h2 class="logo"><a href="index.html">Best Top Rank</a></h2>
       <nav>
         <ul class="nav-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="#categories">Categories</a></li>
           <li><a href="#about">About</a></li>
         </ul>
@@ -285,10 +288,6 @@
             <li><a href="#affiliate">Affiliate Disclosure</a></li>
           </ul>
         </div>
-        <div class="footer-section">
-          <h4>Follow Us</h4>
-          <!-- No icons as per previous -->
-        </div>
       </div>
       <div class="copyright">
         &copy; 2025 Best Top Rank. All rights reserved.
@@ -305,7 +304,7 @@
       { title: 'Top 20 Products', url: '/top-products.html' }
     ];
 
-    // Lunr index code (same as homepage)
+    // Create Lunr index
     const idx = lunr(function () {
       this.ref('url');
       this.field('title');
