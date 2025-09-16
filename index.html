@@ -39,6 +39,7 @@
       height: 200%;
       background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
       animation: pulse 5s infinite;
+      z-index: -1;
     }
     @keyframes pulse {
       0% { transform: scale(1); }
@@ -49,15 +50,23 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
+      position: relative;
+      z-index: 1;
     }
     .logo {
       font-size: 2rem;
       font-weight: 700;
       margin: 0;
+      z-index: 10;
     }
     .logo a {
       color: var(--light-text);
       text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .logo a:hover {
+      color: var(--accent-color);
     }
     nav {
       display: flex;
@@ -193,7 +202,7 @@
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
+      cursor: pointer; /* Indicates clickable */
     }
     .card:hover {
       transform: translateY(-10px);
@@ -294,9 +303,9 @@
       <h2 class="logo"><a href="index.html">Best Top Rank</a></h2>
       <nav>
         <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#categories">Categories</a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="about.html">About</a></li>
         </ul>
         <div class="search-container">
           <input type="text" id="search-input" placeholder="Search reviews...">
@@ -310,7 +319,7 @@
       <div class="container">
         <h1>Discover the Best Top 10 Products</h1>
         <p>Your ultimate guide to premium product reviews and recommendations. Shop smarter with our expert-curated lists.</p>
-        <a href="/top-products.html" class="cta-button">Explore Now</a>
+        <a href="top-products.html" class="cta-button">Explore Now</a>
       </div>
     </div>
   </header>
@@ -324,7 +333,7 @@
           <div class="card-content">
             <h3>Top 10 Gadgets 2025</h3>
             <p>Explore the latest tech innovations that will change your life.</p>
-            <a href="/top-10-gadgets.html">Read More →</a>
+            <a href="top-10-gadgets.html">Read More →</a>
           </div>
         </div>
         <div class="card">
@@ -332,7 +341,7 @@
           <div class="card-content">
             <h3>Top 10 Beauty Products</h3>
             <p>Discover skincare and makeup essentials for a flawless look.</p>
-            <a href="/top-10-beauty.html">Read More →</a>
+            <a href="top-10-beauty.html">Read More →</a>
           </div>
         </div>
         <div class="card">
@@ -340,7 +349,7 @@
           <div class="card-content">
             <h3>Top 10 Home Appliances</h3>
             <p>Upgrade your living space with these must-have items.</p>
-            <a href="/top-10-home.html">Read More →</a>
+            <a href="top-10-home.html">Read More →</a>
           </div>
         </div>
       </div>
@@ -372,10 +381,13 @@
   <script>
     // Sample pages data - add all your site pages here
     const pages = [
-      { title: 'Top 10 Gadgets 2025', url: '/top-10-gadgets.html' },
-      { title: 'Top 10 Beauty Products', url: '/top-10-beauty.html' },
-      { title: 'Top 10 Home Appliances', url: '/top-10-home.html' },
-      { title: 'Top 20 Products', url: '/top-products.html' },
+      { title: 'Home', url: 'index.html' },
+      { title: 'Categories', url: 'categories.html' },
+      { title: 'About Us', url: 'about.html' },
+      { title: 'Top 10 Gadgets 2025', url: 'top-10-gadgets.html' },
+      { title: 'Top 10 Beauty Products', url: 'top-10-beauty.html' },
+      { title: 'Top 10 Home Appliances', url: 'top-10-home.html' },
+      { title: 'Top 20 Products', url: 'top-products.html' },
     ];
 
     // Create Lunr index
@@ -438,6 +450,16 @@
         if (link) link.click();
       });
     });
+
+    // Ensure logo link is clickable
+    const logoLink = document.querySelector('.logo a');
+    if (logoLink) {
+      logoLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        window.location.href = 'index.html';
+      });
+    }
   </script>
 </body>
 </html>
