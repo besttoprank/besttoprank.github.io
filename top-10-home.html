@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top 10 Home Appliances - Best Top Rank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script>
+  <style>
+    :root {
+      --primary-color: #4a90e2;
+      --secondary-color: #2c3e50;
+      --accent-color: #f39c12;
+      --background-color: #f8f9fa;
+      --text-color: #333;
+      --light-text: #fff;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--light-text);
+      padding: 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+      animation: pulse 5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li {
+      margin-left: 2rem;
+    }
+    .nav-links a {
+      color: var(--light-text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+    .search-container {
+      position: relative;
+      width: 300px;
+    }
+    #search-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      background-color: rgba(255,255,255,0.2);
+      color: var(--light-text);
+      outline: none;
+      transition: background-color 0.3s ease;
+    }
+    #search-input::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+    #search-input:focus {
+      background-color: rgba(255,255,255,0.3);
+    }
+    #search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: var(--light-text);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-height: 300px;
+      overflow-y: auto;
+      display: none;
+      z-index: 1000;
+    }
+    #search-results ul {
+      list-style: none;
+      margin: 0;
+      padding: 1rem;
+    }
+    #search-results li {
+      margin-bottom: 0.5rem;
+    }
+    #search-results a {
+      color: var(--text-color);
+      text-decoration: none;
+      display: block;
+      padding: 0.5rem;
+      border-radius: 10px;
+      transition: background-color 0.3s ease;
+    }
+    #search-results a:hover {
+      background-color: var(--background-color);
+    }
+    .content {
+      padding: 4rem 0;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 2rem;
+    }
+    p.intro {
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+    }
+    ul.product-list {
+      list-style-type: none;
+      padding: 0;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    ul.product-list li {
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    ul.product-list li:hover {
+      transform: translateY(-5px);
+    }
+    footer {
+      background-color: var(--secondary-color);
+      color: var(--light-text);
+      padding: 3rem 0 1rem;
+      margin-top: 4rem;
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 2rem;
+    }
+    .footer-section h4 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-section li {
+      margin-bottom: 0.5rem;
+    }
+    .footer-section a {
+      color: var(--light-text);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-section a:hover {
+      color: var(--accent-color);
+    }
+    .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--secondary-color);
+        display: none;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .nav-links li {
+        margin: 1rem 0;
+        text-align: center;
+      }
+      .search-container {
+        width: 100%;
+        margin-top: 1rem;
+      }
+      .footer-content {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h2 class="logo">Best Top Rank</h2>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+        <div class="search-container">
+          <input type="text" id="search-input" placeholder="Search reviews...">
+          <div id="search-results">
+            <ul></ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="content">
+    <div class="container">
+      <h1>Top 10 Home Appliances</h1>
+      <p class="intro">This is a placeholder page for upcoming reviews. Below is a mock bulleted list of 10 products—note that these are not real products and are placeholders for future Amazon affiliate links and descriptions.</p>
+      <ul class="product-list">
+        <li><strong>Placeholder Amazon Product 1</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Efficient kitchen gadget (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 2</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Smart cleaning device (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 3</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Energy-saving laundry tool (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 4</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Compact cooking appliance (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 5</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Modern air purifier (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 6</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Versatile vacuum system (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 7</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Quiet blender model (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 8</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Space-saving organizer (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 9</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Durable coffee maker (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 10</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Eco-friendly humidifier (mock pros/cons to be added).</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About Us</h4>
+          <p>We provide honest, in-depth reviews to help you make informed purchasing decisions.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="#affiliate">Affiliate Disclosure</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Follow Us</h4>
+          <!-- No icons as per previous -->
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 Best Top Rank. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sample pages data - updated to include new pages
+    const pages = [
+      { title: 'Top 10 Gadgets 2025', url: '/top-10-gadgets.html' },
+      { title: 'Top 10 Beauty Products', url: '/top-10-beauty.html' },
+      { title: 'Top 10 Home Appliances', url: '/top-10-home.html' },
+      { title: 'Top 20 Products', url: '/top-products.html' }
+    ];
+
+    // Lunr index code (same as homepage)
+    const idx = lunr(function () {
+      this.ref('url');
+      this.field('title');
+
+      pages.forEach(function (doc) {
+        this.add(doc);
+      }, this);
+    });
+
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    const resultsList = searchResults.querySelector('ul');
+
+    searchInput.addEventListener('input', function () {
+      const query = this.value.trim();
+      if (query.length < 2) {
+        searchResults.style.display = 'none';
+        return;
+      }
+
+      const results = idx.search(query);
+      resultsList.innerHTML = '';
+
+      if (results.length === 0) {
+        const li = document.createElement('li');
+        li.textContent = 'No results found';
+        resultsList.appendChild(li);
+      } else {
+        results.forEach(function (result) {
+          const page = pages.find(p => p.url === result.ref);
+          if (page) {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = page.url;
+            a.textContent = page.title;
+            li.appendChild(a);
+            resultsList.appendChild(li);
+          }
+        });
+      }
+
+      searchResults.style.display = 'block';
+    });
+
+    // Close results when clicking outside
+    document.addEventListener('click', function (event) {
+      if (!searchContainer.contains(event.target)) {
+        searchResults.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
