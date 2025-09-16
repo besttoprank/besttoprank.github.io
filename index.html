@@ -189,6 +189,7 @@
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer; /* Indicates clickable */
     }
     .card:hover {
       transform: translateY(-10px);
@@ -273,11 +274,6 @@
         margin: 1rem 0;
         text-align: center;
       }
-      .menu-toggle {
-        display: block;
-        cursor: pointer;
-        font-size: 1.5rem;
-      }
       .search-container {
         width: 100%;
         margin-top: 1rem;
@@ -311,7 +307,7 @@
       <div class="container">
         <h1>Discover the Best Top 10 Products</h1>
         <p>Your ultimate guide to premium product reviews and recommendations. Shop smarter with our expert-curated lists.</p>
-        <a href="#featured" class="cta-button">Explore Now</a>
+        <a href="/top-products.html" class="cta-button">Explore Now</a>
       </div>
     </div>
   </header>
@@ -380,7 +376,7 @@
       { title: 'Top 10 Gadgets 2025', url: '/top-10-gadgets.html' },
       { title: 'Top 10 Beauty Products', url: '/top-10-beauty.html' },
       { title: 'Top 10 Home Appliances', url: '/top-10-home.html' },
-      // Add more { title: 'Page Title', url: '/page-url.html' } as you create pages
+      { title: 'Top 20 Products', url: '/top-products.html' },
     ];
 
     // Create Lunr index
@@ -433,6 +429,15 @@
       if (!searchContainer.contains(event.target)) {
         searchResults.style.display = 'none';
       }
+    });
+
+    // Make featured cards clickable
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const link = card.querySelector('a');
+        if (link) link.click();
+      });
     });
   </script>
 </body>
