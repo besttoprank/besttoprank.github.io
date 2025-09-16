@@ -54,10 +54,15 @@
       font-size: 2rem;
       font-weight: 700;
       margin: 0;
+      z-index: 10;
     }
     .logo a {
       color: var(--light-text);
       text-decoration: none;
+      display: inline-block;
+    }
+    .logo a:hover {
+      color: var(--accent-color);
     }
     nav {
       display: flex;
@@ -355,6 +360,15 @@
         searchResults.style.display = 'none';
       }
     });
+
+    // Ensure logo link is clickable
+    const logoLink = document.querySelector('.logo a');
+    if (logoLink) {
+      logoLink.addEventListener('click', (event) => {
+        event.stopPropagation();
+        window.location.href = 'index.html';
+      });
+    }
   </script>
 </body>
 </html>
