@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Top 10 Home Appliances - Best Top Rank</title>
+  <title>Top 10 Gadgets 2025 - Best Top Rank</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script>
   <style>
@@ -39,6 +39,7 @@
       height: 200%;
       background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
       animation: pulse 5s infinite;
+      z-index: -1;
     }
     @keyframes pulse {
       0% { transform: scale(1); }
@@ -49,15 +50,23 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
+      position: relative;
+      z-index: 1;
     }
     .logo {
       font-size: 2rem;
       font-weight: 700;
       margin: 0;
+      z-index: 10;
     }
     .logo a {
       color: var(--light-text);
       text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .logo a:hover {
+      color: var(--accent-color);
     }
     nav {
       display: flex;
@@ -256,19 +265,19 @@
 
   <section class="content">
     <div class="container">
-      <h1>Top 10 Home Appliances</h1>
+      <h1>Top 10 Gadgets 2025</h1>
       <p class="intro">This is a placeholder page for upcoming reviews. Below is a mock bulleted list of 10 products—note that these are not real products and are placeholders for future Amazon affiliate links and descriptions.</p>
       <ul class="product-list">
-        <li><strong>Placeholder Amazon Product 1</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Efficient kitchen gadget (mock pros/cons to be added).</li>
-        <li><strong>Placeholder Amazon Product 2</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Smart cleaning device (mock pros/cons to be added).</li>
-        <li><strong>Placeholder Amazon Product 3</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Energy-saving laundry tool (mock pros/cons to be added).</li>
-        <li><strong>Placeholder Amazon Product 4</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Compact cooking appliance (mock pros/cons to be added).</li>
-        <li><strong>Placeholder Amazon Product 5</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Modern air purifier (mock pros/cons to be added).</li>
-        <li><strong>Placeholder Amazon Product 6</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Versatile vacuum system (mock pros/cons to be added).</li>
-        <li><strong>Placeholder Amazon Product 7</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Quiet blender model (mock pros/cons to be added).</li>
-        <li><strong>Placeholder Amazon Product 8</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Space-saving organizer (mock pros/cons to be added).</li>
-        <li><strong>Placeholder Amazon Product 9</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Durable coffee maker (mock pros/cons to be added).</li>
-        <li><strong>Placeholder Amazon Product 10</strong>: This is a placeholder for an Amazon home appliance and not a real item. Description: Eco-friendly humidifier (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 1</strong>: This is a placeholder for an Amazon gadget and not a real item. Description: A futuristic device with advanced features (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 2</strong>: This is a placeholder for an Amazon gadget and not a real item. Description: Compact and portable tech accessory (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 3</strong>: This is a placeholder for an Amazon gadget and not a real item. Description: Innovative smart home integration tool (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 4</strong>: This is a placeholder for an Amazon gadget and not a real item. Description: High-performance wireless gadget (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 5</strong>: This is a placeholder for an Amazon gadget and not a real item. Description: Eco-friendly tech innovation (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 6</strong>: This is a placeholder for an Amazon gadget and not a real item. Description: Multi-functional device for everyday use (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 7</strong>: This is a placeholder for an Amazon gadget and not a real item. Description: Cutting-edge audio gadget (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 8</strong>: This is a placeholder for an Amazon gadget and not a real item. Description: Durable outdoor tech item (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 9</strong>: This is a placeholder for an Amazon gadget and not a real item. Description: Sleek wearable gadget (mock pros/cons to be added).</li>
+        <li><strong>Placeholder Amazon Product 10</strong>: This is a placeholder for an Amazon gadget and not a real item. Description: Budget-friendly high-tech option (mock pros/cons to be added).</li>
       </ul>
     </div>
   </section>
@@ -355,6 +364,16 @@
         searchResults.style.display = 'none';
       }
     });
+
+    // Ensure logo link is clickable
+    const logoLink = document.querySelector('.logo a');
+    if (logoLink) {
+      logoLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        window.location.href = 'index.html';
+      });
+    }
   </script>
 </body>
 </html>
